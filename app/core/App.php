@@ -12,11 +12,8 @@
             $this->controller = $url[0];
             unset($url[0]);
             
-        } else {
+        } 
        
-        }
-           
-
            require_once '../app/controllers/' . $this->controller . '.php';
            $this->controller = new $this->controller; 
 
@@ -28,7 +25,7 @@
            }
 
             if(!empty($url)){
-                var_dump($url);
+                
                 $this->params = array_values($url);
           
             }
