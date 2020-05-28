@@ -9,4 +9,13 @@ class Friend extends Controller {
         $this->view('friend/index', $data);
         $this->view('templates/footer');
     }
+
+    public function detail($id){
+        $data['title'] = "Friend Detail";
+        $data['css'] = "home.css";
+        $data['friend'] = $this->model('Friend_model')->getFriendById($id);
+        $this->view('templates/header', $data);
+        $this->view('friend/detail', $data);
+        $this->view('templates/footer');
+    }
 }

@@ -1,24 +1,29 @@
 <?php
 
 class Friend_model {
-    private $dbh;
-    private $stmt;
+    private $table = 'friend';
+    private $db;
 
-    public function __construct()
-    {
-        $dsn = 'mysql:host=localhost;dbname=mvc';
-        try{
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch(PDOException $e){
-            die($e->getMessege());
-        }
-
+    public function __construct(){
+        $this->db = new Database;
+        
     }
+
+   
 
 
     public function getAllFriend(){
-         $this->stmt = $this->dbh->prepare('SELECT * FROM friend');
-         $this->stmt->execute();
-         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->db->query('SELECT * FROM ' .$this->table);
+        return $this->db->resultSet();
      }
+
+     public function getFriendById($id){
+      
+
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE friend_id = :id;');
+        $this->db->bind('id', $id);
+        return $this->db->single();     
+     }
+
+     
 }
