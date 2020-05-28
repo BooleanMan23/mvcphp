@@ -18,4 +18,11 @@ class Friend extends Controller {
         $this->view('friend/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function add(){
+        if($this->model('Friend_model')->addFriend($_POST) > 0){
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        }
+    }
 }

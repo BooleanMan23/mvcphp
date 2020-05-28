@@ -25,5 +25,15 @@ class Friend_model {
         return $this->db->single();     
      }
 
+     public function addFriend($data){
+         $query = "INSERT INTO friend VALUES ('', :friend_name, :friend_number, :friend_email)";
+         $this->db->query($query);
+         $this->db->bind('friend_name', $data['friendNameInput']);
+         $this->db->bind('friend_number', $data['friendNumberInput']);
+         $this->db->bind('friend_email', $data['friendEmailInput']);
+         $this->db->execute();
+         return $this->db->rowCount();
+     }
+
      
 }
