@@ -21,6 +21,11 @@ class Friend extends Controller {
 
     public function add(){
         if($this->model('Friend_model')->addFriend($_POST) > 0){
+            Flasher::setFlash('success', 'add friend', 'success');
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        } else {
+            Flasher::setFlash('fail', 'add friend', 'danger');
             header('Location: '. BASEURL . '/friend');
             exit;
         }

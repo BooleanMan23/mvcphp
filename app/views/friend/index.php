@@ -1,6 +1,11 @@
 <div class = "container mt-5">
     <div class= "row">
     <div class= "col-6">
+        <div class="row">
+
+                <?php Flasher::flash(); ?>
+         
+        </div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addFriendModal">
             Add a friend
         </button>
