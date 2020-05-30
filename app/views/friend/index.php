@@ -12,9 +12,11 @@
             <h3>Friend List</h3>
                 <ul class = "list-group">
                     <?php  foreach($data['friends'] as $friend) : ?>
-                        <li class = "list-group-item d-flex justify-content-between align-items-center">
+                        <li class = "list-group-item ">
                             <?= $friend['friend_name']; ?>
-                            <a href="<?=BASEURL;?>/friend/detail/<?=$friend['friend_id']?>" class="badge badge-primary">Detail</a>
+                            <a href="<?=BASEURL;?>/friend/delete/<?=$friend['friend_id']?>" class="badge badge-danger float-right ml-2" onclick = "return confirm('Are you sure?')">Delete</a>
+                            <a href="<?=BASEURL;?>/friend/detail/<?=$friend['friend_id']?>" class="badge badge-primary float-right ml-2">Detail</a>
+                         
                         </li>
                     <?php endforeach ?>
                 </ul>

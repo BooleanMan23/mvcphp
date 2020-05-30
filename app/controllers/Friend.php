@@ -30,4 +30,17 @@ class Friend extends Controller {
             exit;
         }
     }
+
+    public function delete($id){
+        if($this->model('Friend_model')->deleteFriend($id) > 0){
+            Flasher::setFlash('success', 'delete friend', 'success');
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        } else {
+            Flasher::setFlash('fail', 'delete friend', 'danger');
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        }
+    }
+    
 }
