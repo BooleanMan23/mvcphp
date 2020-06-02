@@ -42,5 +42,21 @@ class Friend extends Controller {
             exit;
         }
     }
+
+    public function getUpdate(){
+        echo json_encode($this->model('Friend_model')->getFriendById($_POST['id']));
+    }
+
+    public function update(){
+        if($this->model('Friend_model')->updateFriend($_POST) > 0){
+            Flasher::setFlash('success', 'update friend', 'success');
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        } else {
+            Flasher::setFlash('fail', 'update friend', 'danger');
+            header('Location: '. BASEURL . '/friend');
+            exit;
+        }
+    }
     
 }

@@ -43,5 +43,21 @@ class Friend_model {
        return $this->db->rowCount();
    }
 
+   public function updateFriend($data){
+    $query = "UPDATE friend SET 
+                friend_name = :friend_name,
+                friend_number = :friend_number,
+                friend_email = :friend_email
+                WHERE friend_id = :id";
+    $this->db->query($query);
+    $this->db->bind('friend_name', $data['friendNameInput']);
+    $this->db->bind('friend_number', $data['friendNumberInput']);
+    $this->db->bind('friend_email', $data['friendEmailInput']);
+    $this->db->bind('id', $data['friend_id']);
+
+    $this->db->execute();
+    return $this->db->rowCount();
+}
+
      
 }
