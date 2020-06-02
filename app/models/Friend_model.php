@@ -59,5 +59,13 @@ class Friend_model {
     return $this->db->rowCount();
 }
 
+public function searchFriend(){
+    $searchInput = $_POST['searchInput'];
+    $query = "SELECT * FROM friend WHERE friend_name LIKE :keyword";
+    $this->db->query($query);
+    $this->db->bind('keyword', "%$searchInput%");
+    return $this->db->resultSet();
+}
+
      
 }

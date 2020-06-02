@@ -58,5 +58,14 @@ class Friend extends Controller {
             exit;
         }
     }
+
+    public function search(){
+        $data['title'] = "Friend List";
+        $data['css'] = "home.css";
+        $data['friends'] = $this->model('Friend_model')->searchFriend();
+        $this->view('templates/header', $data);
+        $this->view('friend/index', $data);
+        $this->view('templates/footer');
+    }
     
 }

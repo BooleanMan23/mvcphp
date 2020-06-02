@@ -6,9 +6,19 @@
                 <?php Flasher::flash(); ?>
          
         </div>
+        
         <button type="button"  class="btn btn-primary" id="addFriendButton" data-toggle="modal" data-target="#addFriendModal">
             Add a friend
         </button>
+        <form action="<?=BASEURL;?>/friend/search" method = "POST">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Friend name" name = "searchInput" id = "searchInput" autocomplete = "off ">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+        </form>
+
             <h3>Friend List</h3>
                 <ul class = "list-group">
                     <?php  foreach($data['friends'] as $friend) : ?>
